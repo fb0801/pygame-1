@@ -1,4 +1,7 @@
-import pygame #allow us to use the module
+#allow us to use the module
+
+import pygame
+import os
 
 width, height = 900, 500
 
@@ -7,6 +10,8 @@ pygame.display.set_caption('First Game')#title of the game
 white= 255,255,255
 
 fps= 60
+yellow_spaceship_image = pygame.image.load(os.path.join('Assets', 'spaceship_yellow.png'))
+red_spaceship_image = pygame.image.load(os.path.join('Assets', 'spaceship_red.png'))
 
 def draw_window():
     win.fill((white))
