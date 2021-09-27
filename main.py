@@ -16,6 +16,7 @@ def main():
                 run = False
 
         win.fill((white))
+        pygame.display.update()
 
     pygame.quit()
 
