@@ -7,6 +7,12 @@ pygame.display.set_caption('First Game')#title of the game
 white= 255,255,255
 
 
+def draw_window():
+    win.fill((white))
+    pygame.display.update()
+
+
+
 def main():
 
     run =True
@@ -15,8 +21,7 @@ def main():
             if event.type ==pygame.QUIT:
                 run = False
 
-        win.fill((white))
-        pygame.display.update()
+        draw_window()
 
     pygame.quit()
 
