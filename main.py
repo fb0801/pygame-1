@@ -10,6 +10,7 @@ pygame.display.set_caption('First Game')#title of the game
 white= 255,255,255
 
 fps= 60
+vel = 5
 SPACESHIP_WIDTH, SPACESHIP_HEIGHT = 55,40
 
 
@@ -35,8 +36,8 @@ def draw_window(red, yellow):
 
 
 def main():
-    red = pygame.Rect(100, 300, SPACESHIP_WIDTH, SPACESHIP_HEIGHT)
-    yellow = pygame.Rect(700, 300, SPACESHIP_WIDTH, SPACESHIP_HEIGHT)
+    red = pygame.Rect(700, 300, SPACESHIP_WIDTH, SPACESHIP_HEIGHT)
+    yellow = pygame.Rect(100, 300, SPACESHIP_WIDTH, SPACESHIP_HEIGHT)
 
 
 
@@ -49,6 +50,11 @@ def main():
         for event in pygame.event.get():
             if event.type ==pygame.QUIT:
                 run = False
+
+        keys_pressed = pygame.key.get_pressed()
+        if keys_pressed[pygame.K_a]: # left key
+            yellow.x -= vel
+
 
         draw_window(red, yellow)
 
