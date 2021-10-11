@@ -34,6 +34,28 @@ def draw_window(red, yellow):
     pygame.display.update()
 
 
+def yellow_handle_movement(keys_pressed, yellow):
+    #take key pressed and yellow character
+     if keys_pressed[pygame.K_a]: # left key
+         yellow.x -= vel
+     if keys_pressed[pygame.K_d]: # right key
+         yellow.x += vel
+     if keys_pressed[pygame.K_w]: # up key
+         yellow.y -= vel
+     if keys_pressed[pygame.K_s]: # dwn key
+         yellow.y += vel
+
+
+def red_handle_movement(keys_pressed, red):
+    #take key pressed and yellow character
+     if keys_pressed[pygame.K_LEFT]: # left key
+         red.x -= vel
+     if keys_pressed[pygame.K_RIGHT]: # right key
+         red.x += vel
+     if keys_pressed[pygame.K_UP]: # up key
+         red.y -= vel
+     if keys_pressed[pygame.K_DOWN]: # dwn key
+         red.y += vel
 
 def main():
     red = pygame.Rect(700, 300, SPACESHIP_WIDTH, SPACESHIP_HEIGHT)
@@ -50,18 +72,10 @@ def main():
         for event in pygame.event.get():
             if event.type ==pygame.QUIT:
                 run = False
-
+       
         keys_pressed = pygame.key.get_pressed()
-        if keys_pressed[pygame.K_a]: # left key
-            yellow.x -= vel
-        if keys_pressed[pygame.K_d]: # right key
-            yellow.x += vel
-        if keys_pressed[pygame.K_w]: # up key
-            yellow.y -= vel
-        if keys_pressed[pygame.K_s]: # dwn key
-            yellow.y += vel
-
-
+        yellow_handle_movement(keys_pressed, yellow)
+        red_handle_movement(keys_pressed, red)
         draw_window(red, yellow)
 
     pygame.quit()
