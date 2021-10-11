@@ -7,8 +7,12 @@ width, height = 900, 500
 
 win= pygame.display.set_mode((width, height))
 pygame.display.set_caption('First Game')#title of the game
+
 white= (255,255,255)
 black = (0,0,0)
+red=(255,0,0)
+yellow= (255,255)
+
 BORDER = pygame.Rect(width//2 - 5,0,10,height)
 
 
@@ -32,11 +36,21 @@ RED_SPACESHIP = pygame.transform.rotate(pygame.transform.scale(RED_SPACESHIP_IMA
 
 
 
-def draw_window(red, yellow):
+def draw_window(red, yellow, red_bullets, yellow_bullets):
     win.fill(white)
     pygame.draw.rect(win, black, BORDER)
     win.blit(YELLOW_SPACESHIP, (yellow.x,yellow.y))#add to the screen
     win.blit(RED_SPACESHIP, (red.x, red.y))
+
+
+    for bullet in red_bullets:
+        pygame.draw.rect(win, red, bullet)
+
+
+    for bullet in yellow_bullets:
+        pygame.draw.rect(win, yellow, bullet)
+
+        
     pygame.display.update()
 
 
@@ -116,7 +130,7 @@ def main():
         handle_bullets(yellow_bullets, red_bullets, yellow, red)
 
         
-        draw_window(red, yellow)
+        draw_window(red, yellow, red_bullets, yellow_bullets)
 
     pygame.quit()
 
