@@ -57,9 +57,9 @@ def main():
         if keys_pressed[pygame.K_d]: # right key
             yellow.x += vel
         if keys_pressed[pygame.K_w]: # up key
-            yellow.y += vel
-        if keys_pressed[pygame.K_s]: # dwn key
             yellow.y -= vel
+        if keys_pressed[pygame.K_s]: # dwn key
+            yellow.y += vel
 
 
         draw_window(red, yellow)
