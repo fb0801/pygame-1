@@ -17,7 +17,7 @@ vel = 5
 SPACESHIP_WIDTH, SPACESHIP_HEIGHT = 55,40
 
 BULLET_VEL = 7
-
+MAX_BULLETS= 3
 
 YELLOW_SPACESHIP_IMAGE = pygame.image.load(os.path.join('Assets', 'spaceship_yellow.png'))
 YELLOW_SPACESHIP = pygame.transform.rotate(pygame.transform.scale(YELLOW_SPACESHIP_IMAGE, (SPACESHIP_WIDTH, SPACESHIP_HEIGHT)), 90) #changes the image size and its position
@@ -52,7 +52,7 @@ def yellow_handle_movement(keys_pressed, yellow):
 
 
 def red_handle_movement(keys_pressed, red):
-    #take key pressed and yellow character
+    #take key pressed and red character
      if keys_pressed[pygame.K_LEFT] and red.x - vel > BORDER.x + BORDER.width: # left key
          red.x -= vel
      if keys_pressed[pygame.K_RIGHT] and red.x + vel + red.width < width: # right key
@@ -63,6 +63,7 @@ def red_handle_movement(keys_pressed, red):
          red.y += vel
 
 def main():
+    #run the game 
     red = pygame.Rect(700, 300, SPACESHIP_WIDTH, SPACESHIP_HEIGHT)
     yellow = pygame.Rect(100, 300, SPACESHIP_WIDTH, SPACESHIP_HEIGHT)
 
@@ -79,11 +80,14 @@ def main():
                 run = False
 
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_LCTRL:
-                    bullet=pygame.Rect(yellow.x + yellow.width)
-                    yellow_bullets.append()
+                if event.key == pygame.K_LCTRL and len(yellow_bullets) < MAX_BULLETS:
+                    bullet=pygame.Rect(yellow.x + yellow.width, yellow.y + yellow.height/2 - 2, 10,5)
+                    yellow_bullets.append(bullet)
 
-                if event.key == pygame.K_RCTRL:
+                if event.key == pygame.K_RCTRL and len(red_bullets) < MAX_BULLETS:
+                    bullet=pygame.Rect(red.x, red.y + red.height/2 - 2, 10,5)
+                    red_bullets.append(bullet)
+
             
         keys_pressed = pygame.key.get_pressed()
         yellow_handle_movement(keys_pressed, yellow)
