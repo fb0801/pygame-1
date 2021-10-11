@@ -46,7 +46,7 @@ def yellow_handle_movement(keys_pressed, yellow):
          yellow.x += vel
      if keys_pressed[pygame.K_w] and yellow.y - vel > 0: # up key
          yellow.y -= vel
-     if keys_pressed[pygame.K_s]and yellow.y + vel + yellow.height < height: # dwn key
+     if keys_pressed[pygame.K_s]and yellow.y + vel + yellow.height < height - 15: # dwn key
          yellow.y += vel
 
 
