@@ -7,7 +7,10 @@ width, height = 900, 500
 
 win= pygame.display.set_mode((width, height))
 pygame.display.set_caption('First Game')#title of the game
-white= 255,255,255
+white= (255,255,255)
+black = (0,0,0)
+BORDER = pygame.Rect(width/2 - 5,0,10,height)
+
 
 fps= 60
 vel = 5
@@ -28,7 +31,8 @@ RED_SPACESHIP = pygame.transform.rotate(pygame.transform.scale(RED_SPACESHIP_IMA
 
 
 def draw_window(red, yellow):
-    win.fill((white))
+    win.fill(white)
+    pygame.draw.rect(win, black, BORDER)
     win.blit(YELLOW_SPACESHIP, (yellow.x,yellow.y))#add to the screen
     win.blit(RED_SPACESHIP, (red.x, red.y))
     pygame.display.update()
