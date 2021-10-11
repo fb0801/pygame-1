@@ -16,6 +16,7 @@ fps= 60
 vel = 5
 SPACESHIP_WIDTH, SPACESHIP_HEIGHT = 55,40
 
+BULLET_VEL = 7
 
 
 YELLOW_SPACESHIP_IMAGE = pygame.image.load(os.path.join('Assets', 'spaceship_yellow.png'))
@@ -66,8 +67,8 @@ def main():
     yellow = pygame.Rect(100, 300, SPACESHIP_WIDTH, SPACESHIP_HEIGHT)
 
 
-
-
+    red_bullets =[]
+    yellow_bullets= []
     
     clock = pygame.time.Clock()
     run =True
@@ -76,7 +77,14 @@ def main():
         for event in pygame.event.get():
             if event.type ==pygame.QUIT:
                 run = False
-       
+
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_LCTRL:
+                    bullet=pygame.Rect(yellow.x + yellow.width)
+                    yellow_bullets.append()
+
+                if event.key == pygame.K_RCTRL:
+            
         keys_pressed = pygame.key.get_pressed()
         yellow_handle_movement(keys_pressed, yellow)
         red_handle_movement(keys_pressed, red)
