@@ -52,9 +52,9 @@ def yellow_handle_movement(keys_pressed, yellow):
 
 def red_handle_movement(keys_pressed, red):
     #take key pressed and yellow character
-     if keys_pressed[pygame.K_LEFT]and red.x - vel > 0: # left key
+     if keys_pressed[pygame.K_LEFT] and red.x - vel > BORDER.x + BORDER.width: # left key
          red.x -= vel
-     if keys_pressed[pygame.K_RIGHT] and red.x + vel + red.width < BORDER.x: # right key
+     if keys_pressed[pygame.K_RIGHT] and red.x + vel + red.width < width: # right key
          red.x += vel
      if keys_pressed[pygame.K_UP] and red.y - vel > 0: # up key
          red.y -= vel
