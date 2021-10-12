@@ -12,8 +12,8 @@ pygame.display.set_caption('First Game')#title of the game
 
 white= (255,255,255)
 black = (0,0,0)
-red=(255,0,0)
-yellow= (255,255)
+RED=(255,0,0)
+YELLOW= (255,255)
 
 BORDER = pygame.Rect(width//2 - 5,0,10,height)
 
@@ -50,19 +50,19 @@ def draw_window(red, yellow, red_bullets, yellow_bullets, red_health, yellow_hea
     red_health_text=HEALTH_FONT.render('Health: ' + str(red_health), 1, white)
     yellow_health_text=HEALTH_FONT.render('Health: ' + str(yellow_health), 1, white)
 
-    win.blitz(red_health_text, (width - red_health_text.get_width() - 10,10))
-    win.blitz(yellow_health_text, (10,10))
+    win.blit(red_health_text, (width - red_health_text.get_width() - 10,10))
+    win.blit(yellow_health_text, (10,10))
     
     win.blit(YELLOW_SPACESHIP, (yellow.x,yellow.y))#add to the screen
     win.blit(RED_SPACESHIP, (red.x, red.y))
     
 
     for bullet in red_bullets:
-        pygame.draw.rect(win, red, bullet)
+        pygame.draw.rect(win, RED, bullet)
 
 
     for bullet in yellow_bullets:
-        pygame.draw.rect(win, yellow, bullet)
+        pygame.draw.rect(win, YELLOW, bullet)
 
         
     pygame.display.update()
@@ -131,6 +131,7 @@ def main():
         for event in pygame.event.get():
             if event.type ==pygame.QUIT:
                 run = False
+                pygame.quit()
 
             if event.type == pygame.KEYDOWN:
                 #btn to shoot the bullet
@@ -145,7 +146,7 @@ def main():
             if event.type== RED_HIT:
                 red_health -=1
 
-            if event.type ==YELLOw_HIT:
+            if event.type ==YELLOW_HIT:
                 yellow_health -=1
 
 
