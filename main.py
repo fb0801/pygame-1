@@ -3,7 +3,7 @@
 import pygame
 import os
 pygame.font.init()#use font lib
-pygame.mixer.int()#allow us to use sounds
+pygame.mixer.init()#allow us to use sounds
 
 width, height = 900, 500
 
