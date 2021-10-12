@@ -2,6 +2,8 @@
 
 import pygame
 import os
+pygame.font.init()#use font lib
+
 
 width, height = 900, 500
 
@@ -14,6 +16,11 @@ red=(255,0,0)
 yellow= (255,255)
 
 BORDER = pygame.Rect(width//2 - 5,0,10,height)
+
+
+HEALTH_FONT=pygame.font.SysFont('comicsans',40)
+
+
 
 
 fps= 60
@@ -36,12 +43,19 @@ RED_SPACESHIP = pygame.transform.rotate(pygame.transform.scale(RED_SPACESHIP_IMA
 SPACE= pygame.transform.scale(pygame.image.load(os.path.join('Assets','space.png')), (width,height))
 
 
-def draw_window(red, yellow, red_bullets, yellow_bullets):
+def draw_window(red, yellow, red_bullets, yellow_bullets, red_health, yellow_health):
     win.blit(SPACE, (0,0))
     pygame.draw.rect(win, black, BORDER)
+
+    red_health_text=HEALTH_FONT.render('Health: ' + str(red_health), 1, white)
+    yellow_health_text=HEALTH_FONT.render('Health: ' + str(yellow_health), 1, white)
+
+    win.blitz(red_health_text, (width - red_health_text.get_width() - 10,10))
+    win.blitz(yellow_health_text, (10,10))
+    
     win.blit(YELLOW_SPACESHIP, (yellow.x,yellow.y))#add to the screen
     win.blit(RED_SPACESHIP, (red.x, red.y))
-
+    
 
     for bullet in red_bullets:
         pygame.draw.rect(win, red, bullet)
@@ -154,7 +168,7 @@ def main():
         handle_bullets(yellow_bullets, red_bullets, yellow, red)
 
         
-        draw_window(red, yellow, red_bullets, yellow_bullets)
+        draw_window(red, yellow, red_bullets, yellow_bullets, red_health, yellow_health)
 
     pygame.quit()
 
