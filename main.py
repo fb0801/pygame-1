@@ -37,7 +37,7 @@ SPACE= pygame.transform.scale(pygame.image.load(os.path.join('Assets','space.png
 
 
 def draw_window(red, yellow, red_bullets, yellow_bullets):
-    win.fill(white)
+    win.blit(SPACE, (0,0))
     pygame.draw.rect(win, black, BORDER)
     win.blit(YELLOW_SPACESHIP, (yellow.x,yellow.y))#add to the screen
     win.blit(RED_SPACESHIP, (red.x, red.y))
@@ -106,6 +106,9 @@ def main():
 
     red_bullets =[]
     yellow_bullets= []
+
+    red_health = 10
+    yellow_health =10
     
     clock = pygame.time.Clock()
     run =True
@@ -116,6 +119,7 @@ def main():
                 run = False
 
             if event.type == pygame.KEYDOWN:
+                #btn to shoot the bullet
                 if event.key == pygame.K_LCTRL and len(yellow_bullets) < MAX_BULLETS:
                     bullet=pygame.Rect(yellow.x + yellow.width, yellow.y + yellow.height//2 - 2, 10,5)
                     yellow_bullets.append(bullet)
@@ -124,6 +128,23 @@ def main():
                     bullet=pygame.Rect(red.x, red.y + red.height//2 - 2, 10,5)
                     red_bullets.append(bullet)
 
+            if event.type== RED_HIT:
+                red_health -=1
+
+            if event.type ==YELLOw_HIT:
+                yellow_health -=1
+
+
+        winner_text = ""
+        if red_health <= 0:
+            winner_text = "Yellow win!"
+
+
+        if yellow_health <=0:
+            winner_text = "Red wins!"
+
+        if winner_text !="":
+            pass
             
         keys_pressed = pygame.key.get_pressed()
         yellow_handle_movement(keys_pressed, yellow)
